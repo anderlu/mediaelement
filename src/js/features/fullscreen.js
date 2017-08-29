@@ -266,7 +266,8 @@ Object.assign(MediaElementPlayer.prototype, {
 		}
 
 		if (t.options.setDimensions && typeof t.media.setSize === 'function') {
-			t.media.setSize(screen.width, screen.height);
+			//t.media.setSize(screen.width, screen.height);
+			t.media.setSize(window.innerWidth, window.innerHeight);
 		}
 
 		const layers = t.layers.children, total = layers.length;

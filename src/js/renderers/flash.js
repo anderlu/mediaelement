@@ -265,6 +265,7 @@ const FlashMediaElementRenderer = {
 		};
 
 		window[`__event__${flash.id}`] = (eventName, message) => {
+			console.log(eventName, message);
 			const event = createEvent(eventName, flash);
 			if (message) {
 				try {
@@ -369,8 +370,8 @@ const FlashMediaElementRenderer = {
 
 			// set width&height attributes for video only
 			if (isVideo) {
-				settings.push('width="${flashWidth}"');
-				settings.push('height="${flashHeight}"');
+				settings.push(`width="${flashWidth}"`);
+				settings.push(`height="${flashHeight}"`);
 			}
 			else {
 				settings.push('style="position: fixed; left: -9999em; top: -9999em;"');

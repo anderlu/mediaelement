@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="../../build/mediaelementplayer.css">
+</head>
+<body>
+<!--
+<video id="videoPlayer" width="480" height="360" style="width:480px; height: 360px; background-color: #000"  preload="auto" playsinline webkit-playsinline src="http://1251132611.vod2.myqcloud.com/4126dd3evodtransgzp1251132611/8a592f8b9031868222950257296/f0.f40.mp4">
+</video>
+-->
+<video id="videoPlayer" width="480" height="360" style="width:480px; height: 360px; background-color: #000" autoplay preload="auto" playsinline webkit-playsinline>
+</video>
+<!--preload="auto" 不设置ios需要点击两次播放才会加载视频-->
+<script src="../../build/mediaelement-and-player.js"></script>
+<script>
+    (function () {
+        var player = new MediaElementPlayer('videoPlayer', {
+            pluginPath: "../../build/",
+            poster:'//vodplayerinfo-10005041.file.myqcloud.com/3035579109/vod_paster_pause/paster_pause1469013308.jpg',
+//            duration:30,
+//            forceLive: true,
+//            videoWidth: 480,
+//            videoHeight: 360,
+            // When using `MediaElementPlayer`, an `instance` argument
+            // is available in the `success` callback
+            success: function(mediaElement, originalNode, instance) {
+                // do things
+                console.log('success', mediaElement, originalNode, instance );
+                instance.setSrc('http://1251132611.vod2.myqcloud.com/4126dd3evodtransgzp1251132611/8a592f8b9031868222950257296/f0.f40.mp4');
+//                instance.setSrc('http://200002400.vod.myqcloud.com/200002400_202abdae6f1a11e6a7e02f1fb3c08277.f240.av.m3u8');
+//                instance.setSrc('rtmp://139.199.158.246/dyliveflv1/61372rjEtZ0Tpl9s?ip=10.59.176.223&port=83');
+//                instance.setSrc('rtmp://139.199.158.246/dyliveflv1/606118rNHUCexBPv?ip=10.59.164.31&port=82');
+
+
+                mediaElement.addEventListener('loadedmetadata', function (e, msg) {
+                    console.log('loadedmetadata', e, msg);
+                });
+                mediaElement.addEventListener('error', function (e) {
+                    console.log('error', e.message);
+                });
+            },
+            error: function (media , node) {
+                console.log('error', media, node );
+            }
+        });
+
+        /*var player = new MediaElement('player', {
+            pluginPath: "/path/to/shims/",
+            success: function(mediaElement, originalNode) {
+                // do things
+
+            }
+        });*/
+
+    })()
+</script>
+</body>
+</html>

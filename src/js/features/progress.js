@@ -493,7 +493,7 @@ Object.assign(MediaElementPlayer.prototype, {
 					player.setCurrentRail(e);
 				}
 				updateSlider();
-			} else if (!broadcast || t.options.forceLive) {
+			} else if (!broadcast && t.options.forceLive) {//change condition. fixed always append span bug
 				const label = document.createElement('span');
 				label.className = `${t.options.classPrefix}broadcast`;
 				label.innerText = i18n.t('mejs.live-broadcast');

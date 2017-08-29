@@ -2,6 +2,7 @@
 
 import mejs from './mejs';
 import {EN as en} from '../languages/en';
+//import {zh-CN as en} from '../languages/zh-CN';
 import {escapeHTML, isObjectEmpty} from '../utils/general';
 
 /**

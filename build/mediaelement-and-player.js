@@ -9,12 +9,10 @@
  * License: MIT
  *
  */(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
-
-},{}],2:[function(_dereq_,module,exports){
 (function (global){
 var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
-var minDoc = _dereq_(1);
+var minDoc = _dereq_(3);
 
 var doccy;
 
@@ -31,7 +29,7 @@ if (typeof document !== 'undefined') {
 module.exports = doccy;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"1":1}],3:[function(_dereq_,module,exports){
+},{"3":3}],2:[function(_dereq_,module,exports){
 (function (global){
 var win;
 
@@ -48,6 +46,8 @@ if (typeof window !== "undefined") {
 module.exports = win;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],3:[function(_dereq_,module,exports){
+
 },{}],4:[function(_dereq_,module,exports){
 (function (root) {
 
@@ -559,11 +559,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -979,14 +979,14 @@ _mejs2.default.MediaElement = MediaElement;
 
 exports.default = MediaElement;
 
-},{"2":2,"25":25,"27":27,"28":28,"3":3,"7":7,"8":8}],7:[function(_dereq_,module,exports){
+},{"1":1,"2":2,"25":25,"27":27,"28":28,"7":7,"8":8}],7:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -1011,7 +1011,7 @@ _window2.default.mejs = mejs;
 
 exports.default = mejs;
 
-},{"3":3}],8:[function(_dereq_,module,exports){
+},{"2":2}],8:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1128,11 +1128,11 @@ _mejs2.default.Renderers = renderer;
 },{"7":7}],9:[function(_dereq_,module,exports){
 'use strict';
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -1335,7 +1335,7 @@ Object.assign(_player2.default.prototype, {
 		}
 
 		if (t.options.setDimensions && typeof t.media.setSize === 'function') {
-			t.media.setSize(screen.width, screen.height);
+			t.media.setSize(_window2.default.innerWidth, _window2.default.innerHeight);
 		}
 
 		var layers = t.layers.children,
@@ -1423,10 +1423,10 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"16":16,"2":2,"25":25,"26":26,"27":27,"28":28,"3":3,"5":5}],10:[function(_dereq_,module,exports){
+},{"1":1,"16":16,"2":2,"25":25,"26":26,"27":27,"28":28,"5":5}],10:[function(_dereq_,module,exports){
 'use strict';
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -1516,10 +1516,10 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"16":16,"2":2,"26":26,"27":27,"5":5}],11:[function(_dereq_,module,exports){
+},{"1":1,"16":16,"26":26,"27":27,"5":5}],11:[function(_dereq_,module,exports){
 'use strict';
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -1935,7 +1935,7 @@ Object.assign(_player2.default.prototype, {
 					player.setCurrentRail(e);
 				}
 				updateSlider();
-			} else if (!broadcast || t.options.forceLive) {
+			} else if (!broadcast && t.options.forceLive) {
 				var label = _document2.default.createElement('span');
 				label.className = t.options.classPrefix + 'broadcast';
 				label.innerText = _i18n2.default.t('mejs.live-broadcast');
@@ -2027,10 +2027,10 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"16":16,"2":2,"25":25,"26":26,"30":30,"5":5}],12:[function(_dereq_,module,exports){
+},{"1":1,"16":16,"25":25,"26":26,"30":30,"5":5}],12:[function(_dereq_,module,exports){
 'use strict';
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -2149,10 +2149,10 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"16":16,"2":2,"26":26,"30":30}],13:[function(_dereq_,module,exports){
+},{"1":1,"16":16,"26":26,"30":30}],13:[function(_dereq_,module,exports){
 'use strict';
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -2909,10 +2909,10 @@ _mejs2.default.TrackFormatParser = {
 	}
 };
 
-},{"16":16,"2":2,"26":26,"27":27,"30":30,"5":5,"7":7}],14:[function(_dereq_,module,exports){
+},{"1":1,"16":16,"26":26,"27":27,"30":30,"5":5,"7":7}],14:[function(_dereq_,module,exports){
 'use strict';
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -3278,7 +3278,7 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"16":16,"2":2,"25":25,"26":26,"27":27,"5":5}],15:[function(_dereq_,module,exports){
+},{"1":1,"16":16,"25":25,"26":26,"27":27,"5":5}],15:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3380,11 +3380,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -4108,7 +4108,7 @@ var MediaElementPlayer = function () {
 								}
 							}, 20);
 						} catch (exp) {
-							
+							console.log(exp);
 						}
 					}
 
@@ -5244,7 +5244,7 @@ _mejs2.default.MediaElementPlayer = MediaElementPlayer;
 
 exports.default = MediaElementPlayer;
 
-},{"17":17,"2":2,"25":25,"26":26,"27":27,"28":28,"3":3,"30":30,"5":5,"6":6,"7":7}],17:[function(_dereq_,module,exports){
+},{"1":1,"17":17,"2":2,"25":25,"26":26,"27":27,"28":28,"30":30,"5":5,"6":6,"7":7}],17:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5253,7 +5253,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -5416,10 +5416,10 @@ exports.default = DefaultPlayer;
 
 _window2.default.DefaultPlayer = DefaultPlayer;
 
-},{"3":3}],18:[function(_dereq_,module,exports){
+},{"2":2}],18:[function(_dereq_,module,exports){
 'use strict';
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -5466,12 +5466,12 @@ if (typeof jQuery !== 'undefined') {
 	}
 })(_mejs2.default.$);
 
-},{"16":16,"3":3,"7":7}],19:[function(_dereq_,module,exports){
+},{"16":16,"2":2,"7":7}],19:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -5720,7 +5720,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(DashNativeRenderer);
 
-},{"25":25,"26":26,"27":27,"28":28,"3":3,"7":7,"8":8}],20:[function(_dereq_,module,exports){
+},{"2":2,"25":25,"26":26,"27":27,"28":28,"7":7,"8":8}],20:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5730,11 +5730,11 @@ exports.PluginDetector = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -5791,7 +5791,7 @@ var PluginDetector = exports.PluginDetector = {
 					version = axDetect(ax);
 				}
 			} catch (e) {
-				
+				console.log(e);
 			}
 		}
 		return version;
@@ -5861,7 +5861,7 @@ var FlashMediaElementRenderer = {
 					try {
 						flash.flashApi['set_' + propName](value);
 					} catch (e) {
-						
+						console.log(e);
 					}
 				} else {
 					flash.flashApiStack.push({
@@ -5885,10 +5885,10 @@ var FlashMediaElementRenderer = {
 						try {
 							flash.flashApi['fire_' + methodName]();
 						} catch (e) {
-							
+							console.log(e);
 						}
 					} else {
-						
+						console.log('flash', 'missing method', methodName);
 					}
 				} else {
 					flash.flashApiStack.push({
@@ -5932,6 +5932,7 @@ var FlashMediaElementRenderer = {
 		};
 
 		_window2.default['__event__' + flash.id] = function (eventName, message) {
+			console.log(eventName, message);
 			var event = (0, _general.createEvent)(eventName, flash);
 			if (message) {
 				try {
@@ -5991,8 +5992,8 @@ var FlashMediaElementRenderer = {
 			settings = ['id="__' + flash.id + '"', 'name="__' + flash.id + '"', 'play="true"', 'loop="false"', 'quality="high"', 'bgcolor="#000000"', 'wmode="transparent"', 'allowScriptAccess="' + flash.options.shimScriptAccess + '"', 'allowFullScreen="true"', 'type="application/x-shockwave-flash"', 'pluginspage="//www.macromedia.com/go/getflashplayer"', 'src="' + flash.options.pluginPath + flash.options.filename + '"', 'flashvars="' + flashVars.join('&') + '"'];
 
 			if (isVideo) {
-				settings.push('width="${flashWidth}"');
-				settings.push('height="${flashHeight}"');
+				settings.push('width="' + flashWidth + '"');
+				settings.push('height="' + flashHeight + '"');
 			} else {
 				settings.push('style="position: fixed; left: -9999em; top: -9999em;"');
 			}
@@ -6145,12 +6146,12 @@ if (hasFlash) {
 	_renderer.renderer.add(FlashMediaElementAudioOggRenderer);
 }
 
-},{"2":2,"25":25,"27":27,"28":28,"3":3,"5":5,"7":7,"8":8}],21:[function(_dereq_,module,exports){
+},{"1":1,"2":2,"25":25,"27":27,"28":28,"5":5,"7":7,"8":8}],21:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -6394,12 +6395,12 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(FlvNativeRenderer);
 
-},{"25":25,"26":26,"27":27,"28":28,"3":3,"7":7,"8":8}],22:[function(_dereq_,module,exports){
+},{"2":2,"25":25,"26":26,"27":27,"28":28,"7":7,"8":8}],22:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -6679,14 +6680,14 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(HlsNativeRenderer);
 
-},{"25":25,"26":26,"27":27,"28":28,"3":3,"7":7,"8":8}],23:[function(_dereq_,module,exports){
+},{"2":2,"25":25,"26":26,"27":27,"28":28,"7":7,"8":8}],23:[function(_dereq_,module,exports){
 'use strict';
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -6819,14 +6820,14 @@ _window2.default.HtmlMediaElement = _mejs2.default.HtmlMediaElement = HtmlMediaE
 
 _renderer.renderer.add(HtmlMediaElement);
 
-},{"2":2,"25":25,"27":27,"3":3,"7":7,"8":8}],24:[function(_dereq_,module,exports){
+},{"1":1,"2":2,"25":25,"27":27,"7":7,"8":8}],24:[function(_dereq_,module,exports){
 'use strict';
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -7079,7 +7080,7 @@ var YouTubeIframeRenderer = {
 							mediaElement.dispatchEvent(event);
 							break;
 						default:
-							
+							console.log('youtube ' + youtube.id, propName, 'UNSUPPORTED property');
 							break;
 					}
 				} else {
@@ -7324,7 +7325,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(YouTubeIframeRenderer);
 
-},{"2":2,"26":26,"27":27,"28":28,"3":3,"7":7,"8":8}],25:[function(_dereq_,module,exports){
+},{"1":1,"2":2,"26":26,"27":27,"28":28,"7":7,"8":8}],25:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7332,11 +7333,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.cancelFullScreen = exports.requestFullScreen = exports.isFullScreen = exports.FULLSCREEN_EVENT_NAME = exports.HAS_NATIVE_FULLSCREEN_ENABLED = exports.HAS_TRUE_NATIVE_FULLSCREEN = exports.HAS_IOS_FULLSCREEN = exports.HAS_MS_NATIVE_FULLSCREEN = exports.HAS_MOZ_NATIVE_FULLSCREEN = exports.HAS_WEBKIT_NATIVE_FULLSCREEN = exports.HAS_NATIVE_FULLSCREEN = exports.SUPPORTS_NATIVE_HLS = exports.SUPPORT_PASSIVE_EVENT = exports.SUPPORT_POINTER_EVENTS = exports.HAS_MSE = exports.IS_STOCK_ANDROID = exports.IS_SAFARI = exports.IS_FIREFOX = exports.IS_CHROME = exports.IS_EDGE = exports.IS_IE = exports.IS_ANDROID = exports.IS_IOS = exports.IS_IPOD = exports.IS_IPHONE = exports.IS_IPAD = exports.UA = exports.NAV = undefined;
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -7510,7 +7511,7 @@ _mejs2.default.Features.isFullScreen = isFullScreen;
 _mejs2.default.Features.requestFullScreen = requestFullScreen;
 _mejs2.default.Features.cancelFullScreen = cancelFullScreen;
 
-},{"2":2,"3":3,"7":7}],26:[function(_dereq_,module,exports){
+},{"1":1,"2":2,"7":7}],26:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7526,11 +7527,11 @@ exports.siblings = siblings;
 exports.visible = visible;
 exports.ajax = ajax;
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -7736,7 +7737,7 @@ _mejs2.default.Utils.visible = visible;
 _mejs2.default.Utils.ajax = ajax;
 _mejs2.default.Utils.loadScript = loadScript;
 
-},{"2":2,"3":3,"7":7}],27:[function(_dereq_,module,exports){
+},{"1":1,"2":2,"7":7}],27:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7998,7 +7999,7 @@ _mejs2.default.Utils.normalizeExtension = normalizeExtension;
 },{"27":27,"7":7}],29:[function(_dereq_,module,exports){
 'use strict';
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -8148,7 +8149,7 @@ if (!window.Promise) {
 	}
 })(window.Node || window.Element);
 
-},{"2":2,"4":4}],30:[function(_dereq_,module,exports){
+},{"1":1,"4":4}],30:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

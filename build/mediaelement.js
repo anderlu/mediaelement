@@ -9,12 +9,10 @@
  * License: MIT
  *
  */(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
-
-},{}],2:[function(_dereq_,module,exports){
 (function (global){
 var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
-var minDoc = _dereq_(1);
+var minDoc = _dereq_(3);
 
 var doccy;
 
@@ -31,7 +29,7 @@ if (typeof document !== 'undefined') {
 module.exports = doccy;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"1":1}],3:[function(_dereq_,module,exports){
+},{"3":3}],2:[function(_dereq_,module,exports){
 (function (global){
 var win;
 
@@ -48,6 +46,8 @@ if (typeof window !== "undefined") {
 module.exports = win;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],3:[function(_dereq_,module,exports){
+
 },{}],4:[function(_dereq_,module,exports){
 (function (root) {
 
@@ -559,11 +559,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -979,14 +979,14 @@ _mejs2.default.MediaElement = MediaElement;
 
 exports.default = MediaElement;
 
-},{"16":16,"18":18,"19":19,"2":2,"3":3,"7":7,"8":8}],7:[function(_dereq_,module,exports){
+},{"1":1,"16":16,"18":18,"19":19,"2":2,"7":7,"8":8}],7:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -1011,7 +1011,7 @@ _window2.default.mejs = mejs;
 
 exports.default = mejs;
 
-},{"3":3}],8:[function(_dereq_,module,exports){
+},{"2":2}],8:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1220,7 +1220,7 @@ var EN = exports.EN = {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -1469,7 +1469,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(DashNativeRenderer);
 
-},{"16":16,"17":17,"18":18,"19":19,"3":3,"7":7,"8":8}],11:[function(_dereq_,module,exports){
+},{"16":16,"17":17,"18":18,"19":19,"2":2,"7":7,"8":8}],11:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1479,11 +1479,11 @@ exports.PluginDetector = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -1540,7 +1540,7 @@ var PluginDetector = exports.PluginDetector = {
 					version = axDetect(ax);
 				}
 			} catch (e) {
-				
+				console.log(e);
 			}
 		}
 		return version;
@@ -1610,7 +1610,7 @@ var FlashMediaElementRenderer = {
 					try {
 						flash.flashApi['set_' + propName](value);
 					} catch (e) {
-						
+						console.log(e);
 					}
 				} else {
 					flash.flashApiStack.push({
@@ -1634,10 +1634,10 @@ var FlashMediaElementRenderer = {
 						try {
 							flash.flashApi['fire_' + methodName]();
 						} catch (e) {
-							
+							console.log(e);
 						}
 					} else {
-						
+						console.log('flash', 'missing method', methodName);
 					}
 				} else {
 					flash.flashApiStack.push({
@@ -1681,6 +1681,7 @@ var FlashMediaElementRenderer = {
 		};
 
 		_window2.default['__event__' + flash.id] = function (eventName, message) {
+			console.log(eventName, message);
 			var event = (0, _general.createEvent)(eventName, flash);
 			if (message) {
 				try {
@@ -1740,8 +1741,8 @@ var FlashMediaElementRenderer = {
 			settings = ['id="__' + flash.id + '"', 'name="__' + flash.id + '"', 'play="true"', 'loop="false"', 'quality="high"', 'bgcolor="#000000"', 'wmode="transparent"', 'allowScriptAccess="' + flash.options.shimScriptAccess + '"', 'allowFullScreen="true"', 'type="application/x-shockwave-flash"', 'pluginspage="//www.macromedia.com/go/getflashplayer"', 'src="' + flash.options.pluginPath + flash.options.filename + '"', 'flashvars="' + flashVars.join('&') + '"'];
 
 			if (isVideo) {
-				settings.push('width="${flashWidth}"');
-				settings.push('height="${flashHeight}"');
+				settings.push('width="' + flashWidth + '"');
+				settings.push('height="' + flashHeight + '"');
 			} else {
 				settings.push('style="position: fixed; left: -9999em; top: -9999em;"');
 			}
@@ -1894,12 +1895,12 @@ if (hasFlash) {
 	_renderer.renderer.add(FlashMediaElementAudioOggRenderer);
 }
 
-},{"16":16,"18":18,"19":19,"2":2,"3":3,"5":5,"7":7,"8":8}],12:[function(_dereq_,module,exports){
+},{"1":1,"16":16,"18":18,"19":19,"2":2,"5":5,"7":7,"8":8}],12:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -2143,12 +2144,12 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(FlvNativeRenderer);
 
-},{"16":16,"17":17,"18":18,"19":19,"3":3,"7":7,"8":8}],13:[function(_dereq_,module,exports){
+},{"16":16,"17":17,"18":18,"19":19,"2":2,"7":7,"8":8}],13:[function(_dereq_,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -2428,14 +2429,14 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(HlsNativeRenderer);
 
-},{"16":16,"17":17,"18":18,"19":19,"3":3,"7":7,"8":8}],14:[function(_dereq_,module,exports){
+},{"16":16,"17":17,"18":18,"19":19,"2":2,"7":7,"8":8}],14:[function(_dereq_,module,exports){
 'use strict';
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -2568,14 +2569,14 @@ _window2.default.HtmlMediaElement = _mejs2.default.HtmlMediaElement = HtmlMediaE
 
 _renderer.renderer.add(HtmlMediaElement);
 
-},{"16":16,"18":18,"2":2,"3":3,"7":7,"8":8}],15:[function(_dereq_,module,exports){
+},{"1":1,"16":16,"18":18,"2":2,"7":7,"8":8}],15:[function(_dereq_,module,exports){
 'use strict';
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -2828,7 +2829,7 @@ var YouTubeIframeRenderer = {
 							mediaElement.dispatchEvent(event);
 							break;
 						default:
-							
+							console.log('youtube ' + youtube.id, propName, 'UNSUPPORTED property');
 							break;
 					}
 				} else {
@@ -3073,7 +3074,7 @@ _media.typeChecks.push(function (url) {
 
 _renderer.renderer.add(YouTubeIframeRenderer);
 
-},{"17":17,"18":18,"19":19,"2":2,"3":3,"7":7,"8":8}],16:[function(_dereq_,module,exports){
+},{"1":1,"17":17,"18":18,"19":19,"2":2,"7":7,"8":8}],16:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3081,11 +3082,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.cancelFullScreen = exports.requestFullScreen = exports.isFullScreen = exports.FULLSCREEN_EVENT_NAME = exports.HAS_NATIVE_FULLSCREEN_ENABLED = exports.HAS_TRUE_NATIVE_FULLSCREEN = exports.HAS_IOS_FULLSCREEN = exports.HAS_MS_NATIVE_FULLSCREEN = exports.HAS_MOZ_NATIVE_FULLSCREEN = exports.HAS_WEBKIT_NATIVE_FULLSCREEN = exports.HAS_NATIVE_FULLSCREEN = exports.SUPPORTS_NATIVE_HLS = exports.SUPPORT_PASSIVE_EVENT = exports.SUPPORT_POINTER_EVENTS = exports.HAS_MSE = exports.IS_STOCK_ANDROID = exports.IS_SAFARI = exports.IS_FIREFOX = exports.IS_CHROME = exports.IS_EDGE = exports.IS_IE = exports.IS_ANDROID = exports.IS_IOS = exports.IS_IPOD = exports.IS_IPHONE = exports.IS_IPAD = exports.UA = exports.NAV = undefined;
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -3259,7 +3260,7 @@ _mejs2.default.Features.isFullScreen = isFullScreen;
 _mejs2.default.Features.requestFullScreen = requestFullScreen;
 _mejs2.default.Features.cancelFullScreen = cancelFullScreen;
 
-},{"2":2,"3":3,"7":7}],17:[function(_dereq_,module,exports){
+},{"1":1,"2":2,"7":7}],17:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3275,11 +3276,11 @@ exports.siblings = siblings;
 exports.visible = visible;
 exports.ajax = ajax;
 
-var _window = _dereq_(3);
+var _window = _dereq_(2);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -3485,7 +3486,7 @@ _mejs2.default.Utils.visible = visible;
 _mejs2.default.Utils.ajax = ajax;
 _mejs2.default.Utils.loadScript = loadScript;
 
-},{"2":2,"3":3,"7":7}],18:[function(_dereq_,module,exports){
+},{"1":1,"2":2,"7":7}],18:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3747,7 +3748,7 @@ _mejs2.default.Utils.normalizeExtension = normalizeExtension;
 },{"18":18,"7":7}],20:[function(_dereq_,module,exports){
 'use strict';
 
-var _document = _dereq_(2);
+var _document = _dereq_(1);
 
 var _document2 = _interopRequireDefault(_document);
 
@@ -3897,4 +3898,4 @@ if (!window.Promise) {
 	}
 })(window.Node || window.Element);
 
-},{"2":2,"4":4}]},{},[20,6,5,9,14,11,10,12,13,15]);
+},{"1":1,"4":4}]},{},[20,6,5,9,14,11,10,12,13,15]);
